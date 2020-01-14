@@ -136,7 +136,8 @@ func (s *Session) InitGithubClient() {
     &oauth2.Token{AccessToken: s.GithubAccessToken},
   )
   tc := oauth2.NewClient(ctx, ts)
-  s.GithubClient = github.NewClient(tc)
+  //s.GithubClient = github.NewClient(tc)
+  s.GithubClient = github.NewEnterpriseClient("https://github.platform.vwfs.io", "https://github.platform.vwfs.io", tc)
   s.GithubClient.UserAgent = fmt.Sprintf("%s v%s", Name, Version)
 }
 
